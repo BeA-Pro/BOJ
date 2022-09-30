@@ -23,6 +23,8 @@
 
 using namespace std;
 
+
+
 void input() {
 }
 
@@ -31,6 +33,12 @@ void init() {
 
 
 void solution() {
+    int N;
+    cin>>N;
+    ll a = 1;
+    for(int i=1;i<=N;i++) a*=i;
+    
+    cout<<a;
 }
 
 int main()
@@ -40,11 +48,3 @@ int main()
     solution();
     return 0;
 }
-
-
-case(a)
-    0: //code
-    1: //code
-    2: //code
-    default : //code
-endcase
