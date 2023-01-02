@@ -20,10 +20,17 @@
 #define INF 1000000000
 #define endl '\n'
 #define ll long long
-
+#define mod 1000000
 using namespace std;
 
+int sum = 0;
+bool flag=false;
+string s;
+
+int dp[6000];
+
 void input() {
+    cin>>s;
 }
 
 void init() {
@@ -31,6 +38,7 @@ void init() {
 
 
 void solution() {
+
 }
 
 int main()
