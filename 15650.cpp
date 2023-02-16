@@ -14,7 +14,11 @@ void com(int idx,int cnt,int r){
     }
     if(idx==v.size()) return;
     b[cnt]=v[idx];
+    
+    //현재 요소를 포함하는 경우
     com(idx+1,cnt+1,r);
+
+    //현재 요소를 포함하지 않는 경우
     com(idx+1,cnt,r);
 }
 
