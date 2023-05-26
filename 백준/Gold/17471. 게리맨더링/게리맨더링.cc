@@ -69,12 +69,7 @@ void cal(int idx,int cnt){
   cal(idx+1,cnt + 1);
   color[idx] = 0;
   cal(idx+1, cnt);
-  // for(int i=idx;i<n;i++){
-  //   color[idx] = 1;
-  //   cal(idx+1,cnt+1);
-  //   color[idx] = 0;
-  //   cal(idx+1,cnt);
-  // }
+
 }
 
 
