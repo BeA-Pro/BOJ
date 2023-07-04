@@ -1,58 +1,79 @@
-#include <iostream>
-#include <algorithm>
-#include <queue>
 #include <string>
+#include <stdio.h>
+#include <math.h>
+#include <iostream>
 #include <vector>
+#include <algorithm>
+#include <map>
+#include <queue>
+#include <stack>
+#include <climits>
+
+#define INF 1000000000
+#define endl '\n'
 #define ll long long
+
 using namespace std;
 
-struct info{
-  int cost;
-  int a;
-  int b;
-};
+vector<pair<pair<int,int>,int> > v;
+int N,M,ans=0;
 
-bool cmp(struct info a, struct info b){
-    return a.cost<b.cost;
+int parent[1001];
+
+bool cmp(pair<pair<int,int>,int> a, pair<pair<int,int>,int> b){
+    return a.second<b.second;
 }
 
-int n,m;
-vector<int> parent;
-vector<struct info> info;
-
-int find_parent(int a){
-  if(a==parent[a]) return a;
-  return parent[a] = find_parent(parent[a]);
+int find_parent(int n){
+    if(parent[n]==n) return n;
+    else return find_parent(parent[n]);
 }
 
-int main(){
-  ios_base::sync_with_stdio(false); cin.tie(0); cout.tie(0);
-  //freopen("input.txt","r",stdin);
-
-  cin>>n>>m;
-  
-  parent.resize(n+1);
-  info.resize(m);
-  int a,b,c;
-
-  for(int i=0;i<=n;i++) parent[i] = i;
-
-  for(int i=0;i<m;i++)
-    cin>>info[i].a>>info[i].b>>info[i].cost;
-
-  sort(info.begin(),info.end(),cmp);
-  
-  int total = 0;
-  for(int i=0;i<m;i++){
-    a = info[i].a, b = info[i].b;
-    int p_a = find_parent(a), p_b = find_parent(b);
-    
-    if(p_a!=p_b){
-      parent[p_b] = p_a;
-      total+=info[i].cost;
+void input(){
+    int to,from,cost;
+    cin>>N>>M;
+    for(int i=0;i<M;i++){
+        cin>>to>>from>>cost;
+        if(to==from) continue;
+        v.push_back(make_pair(make_pair(to,from),cost));
     }
-  }
+    
+}
 
-  cout<<total;
-  return 0;
+void init() {
+    for(int i=0;i<=1000;i++) parent[i]=i;
+}
+
+
+void solution() {
+    sort(v.begin(),v.end(),cmp);
+    
+    int to,from,cost,p_to,p_from;
+    for(int i=0;i<v.size();i++){
+        to=v[i].first.first;
+        from=v[i].first.second;
+        cost=v[i].second;
+        int temp;
+        if(to>from){
+            temp=to;
+            to=from;
+            from=temp;
+        }
+        p_to=find_parent(to);
+        p_from=find_parent(from);
+        if(p_to!=p_from){
+            parent[p_from]=p_to;
+            ans+=cost;
+        }
+    }
+}
+
+int main()
+{
+    ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+    input();
+    init();
+    solution();
+    cout<<ans;
+    return 0;
 }
