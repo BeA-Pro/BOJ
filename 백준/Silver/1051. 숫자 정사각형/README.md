@@ -1,10 +1,10 @@
-# [Silver IV] 숫자 정사각형 - 1051 
+# [Silver III] 숫자 정사각형 - 1051 
 
 [문제 링크](https://www.acmicpc.net/problem/1051) 
 
 ### 성능 요약
 
-메모리: 2024 KB, 시간: 0 ms
+메모리: 2032 KB, 시간: 0 ms
 
 ### 분류
 
