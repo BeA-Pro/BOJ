@@ -27,25 +27,10 @@ class Solution {
             dfs(0,a_sum,a_side,0,dice);
             dfs(0,b_sum,b_side,0,dice);
             
-            // for(int i=0;i<a_sum.length;i++){
-            //     if(a_sum[i] != 0) System.out.printf("%d %d\n", i,a_sum[i]);
-            // }
-            // System.out.println();
-            // for(int i=0;i<b_sum.length;i++){
-            //     if(b_sum[i] != 0) System.out.printf("%d %d\n", i,b_sum[i]);
-            // }
-            
             for(int i=1;i<b_sum.length;i++) b_sum[i] += b_sum[i-1];
             int total = 0;
             
-            // for(int i=0;i<a_sum.length;i++){
-            //     if(a_sum[i] != 0) System.out.printf("%d %d\n", i,a_sum[i]);
-            // }
-            // System.out.println();
-            // for(int i=0;i<b_sum.length;i++){
-            //     if(b_sum[i] != 0) System.out.printf("%d %d\n", i,b_sum[i]);
-            // }
-            
+
             for(int i=1;i<a_sum.length;i++){
                 if(a_sum[i]!=0){
                     total+=a_sum[i]*b_sum[i-1];
@@ -55,10 +40,7 @@ class Solution {
             if(total > ans_sum){
                 ans_sum = total;
                 answer = a_side;
-                
-                // for(int a : a_side) System.out.printf("%d ",a);
-                // System.out.println();
-                // System.out.println(ans_sum);
+
             }
             
             return;
