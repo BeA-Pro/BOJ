@@ -59,7 +59,7 @@ class Solution {
             String temp = "";
             for(int i = 2; i <= 9; i++){
                 if(check[i]) continue;
-                try{
+    
                     int left = Integer.parseInt(cur.left, i), right = Integer.parseInt(cur.right, i);
                     int answer;
                     if(cur.symbol.equals("+")) answer = left + right;
@@ -68,9 +68,7 @@ class Solution {
                     if(temp.equals("")) temp = Integer.toString(answer,i);
                     else if(!temp.equals(Integer.toString(answer,i))) flag = true;    
                     
-                } catch (NumberFormatException e){
-                    flag = true;
-                }
+             
                 
             }
             if(flag) answerList.add(cur.left+" "+cur.symbol+" "+cur.right+" = ?");
